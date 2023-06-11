@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+        </li>
+        <li>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+        </li>
+        <li>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+        </li>
+        <li>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+        </li>
+        <li>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+            <div class="verso carta" onclick="cartPress(this)"></div>
+        </li>
+    </ul>
+</body>
+<script>
+    function cartPress(elemento) {
+        if (elemento.classList.contains('verso')) {
+            elemento.classList.remove('verso');
+            elemento.classList.add('frente');
+            if (cartasViradas == 0) {
+                carta1 = elemento;
+                cartasViradas++;
+            }
+            else if (carta1.innerHTML == elemento.innerHTML) {
+                elemento.classList.remove('verso');
+                elemento.classList.add('block');
+                carta1.classList.remove('frente');
+                carta1.classList.add('block');
+                carta1 = null;
+                cartasViradas = 0;
+            }
+            else {
+                resetaCartas(carta1, elemento);
+            }
+
+        }
+
+    }
+
+    function embaralhar(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
+    function resetaCartas(element1, element2) {
+            setTimeout(function() {
+            element1.classList.remove('frente');
+            element1.classList.add('verso');
+            element2.classList.remove('frente');
+            element2.classList.add('verso');
+            cartasViradas = 0;
+            element1 = null;
+        }, 500);
+        
+    }
+
+    var carta1;
+    var cartasViradas = 0;
+    var cartas = [];
+
+    for (var i = 1; i <= 10; i++) {//alimento um vetor com pares de valores
+        cartas.push(i);
+        cartas.push(i);
+    }
+    cartas = embaralhar(cartas);
+    var elementosCarta = document.querySelectorAll('.carta');//seleciono todos os elementos que contem a classe carta
+
+    for (var i = 0; i < elementosCarta.length; i++) {
+        elementosCarta[i].textContent = cartas.shift();//em cada elemento adiciono um numero do vetor embaralhado, como estivessemos distribuindo as cartas na mesa
+    }
+
+
+</script>
+
+</html>

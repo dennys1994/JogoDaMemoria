@@ -1,0 +1,55 @@
+.frente {
+    width: 100px;
+    height: 100px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.block {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.verso {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    background-color: #999999;
+    color: transparent;/*Esconder o conteudo da cartas*/
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+}
